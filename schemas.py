@@ -21,8 +21,9 @@ class Recipe(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        orm_mode = True  # 允许从 ORM 模型中读取字段
+    model_config = {
+        "from_attributes": True
+    }
         
 
 # 成功响应格式
