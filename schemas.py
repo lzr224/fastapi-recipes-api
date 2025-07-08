@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import List
 from datetime import datetime
 
 # 请求体：创建用
@@ -10,7 +10,7 @@ class RecipeCreate(BaseModel):
     ingredients: str
     cost: int
 
-# 成功时返回的单个 recipe 项
+# 返回的单个 recipe 数据结构
 class Recipe(BaseModel):
     id: int
     title: str
@@ -20,6 +20,10 @@ class Recipe(BaseModel):
     cost: int
     created_at: datetime
     updated_at: datetime
+
+    class Config:
+        orm_mode = True  # 允许从 ORM 模型中读取字段
+        
 
 # 成功响应格式
 class RecipeCreateSuccessResponse(BaseModel):
