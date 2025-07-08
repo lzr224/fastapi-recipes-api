@@ -7,6 +7,11 @@ from database import init_db
 
 app = FastAPI()
 
+# 根路径返回提示
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI is running!"}
+
 # 初始化数据库
 init_db()
 
